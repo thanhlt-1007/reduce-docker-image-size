@@ -69,3 +69,5 @@ docker image inspect update-app-4:2.0.0 --format='{{.Size}}' | numfmt --to=si
 ```
 
 ## Method 5: Use Dockerignore
+
+## Method 6: Keep Application Data Elsewhere
