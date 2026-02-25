@@ -67,3 +67,5 @@ docker build -f Dockerfile-4-understanding-caching -t update-app-4:2.0.0 --no-ca
 // 261M
 docker image inspect update-app-4:2.0.0 --format='{{.Size}}' | numfmt --to=si
 ```
+
+## Method 5: Use Dockerignore
