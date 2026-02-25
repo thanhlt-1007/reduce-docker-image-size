@@ -41,11 +41,29 @@ docker build -f Dockerfile-3 -t update-app-3:1.0.0 --no-cache .
 docker image inspect update-app-3:1.0.0 --format='{{.Size}}' | numfmt --to=si
 ```
 
-- Minimize the number of layers (reduce COPY instruction)
+- Minimize the number of layers (reduce COPY command)
 
 ```sh
 docker build -f Dockerfile-3-minimize-the-number-of-layers -t update-app-3:2.0.0 --no-cache .
 
 // 261M
 docker image inspect update-app-3:2.0.0 --format='{{.Size}}' | numfmt --to=si
+```
+
+## Method 4: Understading Caching
+
+```sh
+docker build -f Dockerfile-4 -t update-app-4:1.0.0 --no-cache .
+
+// 261M
+docker image inspect update-app-4:1.0.0 --format='{{.Size}}' | numfmt --to=si
+```
+
+- Understading Caching (Install dependencies before COPY command)
+
+```sh
+docker build -f Dockerfile-4-understanding-caching -t update-app-4:2.0.0 --no-cache .
+
+// 261M
+docker image inspect update-app-4:2.0.0 --format='{{.Size}}' | numfmt --to=si
 ```
