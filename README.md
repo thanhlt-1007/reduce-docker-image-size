@@ -71,3 +71,16 @@ docker image inspect update-app-4:2.0.0 --format='{{.Size}}' | numfmt --to=si
 ## Method 5: Use Dockerignore
 
 ## Method 6: Keep Application Data Elsewhere
+
+## Docker Image Optimization Tools
+
+### 1. [dive](https://github.com/wagoodman/dive):
+
+- It is an image explore tool that helpes you discover layers in the Docker & OCI containers images.
+
+- Using Five, you can fond ways to optimize your Docker images.
+
+```
+brew install dive
+dive <image-name:tag>
+```
