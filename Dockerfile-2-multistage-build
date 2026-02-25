@@ -1,0 +1,16 @@
+# build-stage
+FROM node:16 AS build-stage
+
+WORKDIR /app
+
+COPY package.json index.js .env ./
+RUN npm install
+
+FROM node:alpine AS main-stage
+
+# main-stage
+
+COPY --from=build-stage /app /
+# match with PORT in .env file
+EXPOSE 8080
+CMD ["node", "index.js"]
