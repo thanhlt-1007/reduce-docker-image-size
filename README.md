@@ -19,7 +19,7 @@ docker image inspect node-app-2:1.0.0 --format='{{.Size}}' | numfmt --to=si
 
 ```sh
 // use the current directory as the build context
-docker build -f Dockerfile-2-multistage-build -t node-app:2.0.0 --no-cache .
+docker build -f Dockerfile-2-multistage-build -t node-app-2:2.0.0 --no-cache .
 
 // inspec image size in decimal units (1 MB = 1,000,000 bytes)
 // 170M
@@ -80,7 +80,25 @@ docker image inspect update-app-4:2.0.0 --format='{{.Size}}' | numfmt --to=si
 
 - Using Five, you can fond ways to optimize your Docker images.
 
-```
+```sh
 brew install dive
 dive <image-name:tag>
+// Ex: dive node-app-2:2.0.0
+```
+
+### 2. [mintoolkit/mint](https://github.com/mintoolkit/mint):
+
+- It helps you optimize your Docker images for security and size.
+
+```sh
+docker run --rm \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  mintoolkit/mint slim \
+  --tag node-app-2.slim:2.0.0 \
+  node-app-2:2.0.0
+
+// 172M
+docker image inspect node-app-2:2.0.0 --format='{{.Size}}' | numfmt --to=si
+// 142M
+docker image inspect node-app-2.slim:2.0.0 --format='{{.Size}}' | numfmt --to=si
 ```
