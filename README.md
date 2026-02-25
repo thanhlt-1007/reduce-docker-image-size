@@ -102,3 +102,12 @@ docker image inspect node-app-2:2.0.0 --format='{{.Size}}' | numfmt --to=si
 // 142M
 docker image inspect node-app-2.slim:2.0.0 --format='{{.Size}}' | numfmt --to=si
 ```
+
+## Scan Docker Images
+
+- [trivy](https://github.com/aquasecurity/trivy)
+
+```sh
+brew install trivy
+trivy image node-app-2.slim:2.0.0
+```
