@@ -31,3 +31,21 @@ docker run -p 8080:8080 node-app-2:2.0.0
 // check container run success
 curl 127.0.0.1:8080
 ```
+
+## Method 3: Minimize the Number of Layers
+
+```sh
+docker build -f Dockerfile-3 -t update-app-3:1.0.0 --no-cache .
+
+// 264M
+docker image inspect update-app-3:1.0.0 --format='{{.Size}}' | numfmt --to=si
+```
+
+- Minimize the number of layers (reduce COPY instruction)
+
+```sh
+docker build -f Dockerfile-3-minimize-the-number-of-layers -t update-app-3:2.0.0 --no-cache .
+
+// 261M
+docker image inspect update-app-3:2.0.0 --format='{{.Size}}' | numfmt --to=si
+```
