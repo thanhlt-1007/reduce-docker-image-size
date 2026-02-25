@@ -111,3 +111,12 @@ docker image inspect node-app-2.slim:2.0.0 --format='{{.Size}}' | numfmt --to=si
 brew install trivy
 trivy image node-app-2.slim:2.0.0
 ```
+
+### [hadolint](https://github.com/hadolint/hadolint)
+
+- Dockerfile linter, validate inline bash
+
+```sh
+brew install hadolint
+hadolint Dockerfile-2
+```
